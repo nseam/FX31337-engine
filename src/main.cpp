@@ -9,6 +9,10 @@
  * Main file.
  */
 
+#include <stdio.h>
+
+using namespace std;
+
 // Includes for MQL code compatibility.
 #include "includes/mql/common.h"
 #include "includes/mql/const.h"
