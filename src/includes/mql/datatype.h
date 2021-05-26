@@ -9,15 +9,66 @@
  * Includes MQL-compatible data types.
  */
 
+#include <string>
+#include <sstream>
+#include <iomanip>
+#include <vector>
+#include <locale>
+
 using std::string;
 typedef unsigned int uint;
-typedef unsigned long datetime;
+typedef time_t datetime;
 typedef unsigned long ulong;
 typedef unsigned short ushort;
-#define NULL null
+
+#ifdef __MQL__
+#define THIS_PTR (&this)
+#define THIS_REF (this)
+#else
+#define THIS_PTR (this)
+#define THIS_REF (*this)
+#endif
 
 #ifdef __cplusplus
-  #define REF(X) (&X)
+#define REF(X) (&X)
 #else
-  #define REF(X) &X
+#define REF(X) &X
 #endif
+
+#ifdef __MQL__
+#define ARRAY(T, N) T N[];
+#else
+template <typename T>
+class array {
+  std::vector<T> data;
+
+ public:
+  operator T*() { return &data.first(); }
+  operator T[]() { return &data.first(); }
+  T& operator[](int index) { return data[index] }
+};
+
+#define ARRAY(T, N) array<T> N;
+#endif
+
+unsigned int GetPointer(void* _ptr) { return (unsigned int)_ptr; }
+
+datetime StringToTime(const string& value) {
+  std::tm t;
+  std::istringstream ss(value);
+
+  ss >> std::get_time(&t, "%Y-%m-%d %H:%M:%S");
+
+  if (ss.fail()) {
+    throw std::runtime_error{"failed to parse time string"};
+  }
+  return mktime(&t);
+}
+
+#ifndef __MQL__
+#define typename(T) typeid(T).name()
+#endif
+
+class color {
+
+};

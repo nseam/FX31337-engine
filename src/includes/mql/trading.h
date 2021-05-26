@@ -47,3 +47,11 @@
 // PositionSelect
 // PositionSelectByTicket
 // PositionsTotal
+
+struct _SymbolGetter {
+  operator std::string() { return "EURUSD"; }
+} _Symbol;
+
+struct _PeriodGetter {
+  operator ENUM_TIMEFRAMES() { return PERIOD_M30; }
+} _Period;
