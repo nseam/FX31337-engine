@@ -9,6 +9,8 @@
  * Includes functions related to math.
  */
 
+#pragma once
+
 // Includes standard C++ library for non-MQL code.
 //#include <bits/stdc++.h>  // GNU GCC extension.
 #include <cfloat>

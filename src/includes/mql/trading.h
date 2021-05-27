@@ -12,6 +12,8 @@
  * - https://www.mql5.com/en/docs/trading
  */
 
+#pragma once
+
 // HistoryDealGetDouble
 // HistoryDealGetInteger
 // HistoryDealGetString

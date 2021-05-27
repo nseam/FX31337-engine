@@ -18,6 +18,7 @@
  * @docs
  * - https://www.mql5.com/en/docs/check/digits
  */
+#include "../../classes/Chart.enum.h"
 int Digits() { return 0; }
 
 /**

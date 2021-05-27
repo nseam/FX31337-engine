@@ -9,6 +9,8 @@
  * Includes MQL-compatible conversion functions.
  */
 
+#pragma once
+
 // Includes standard C++ libraries.
 #include <stdarg.h>  // For va_start, etc.
 
@@ -16,6 +18,9 @@
 
 // Local includes.
 #include "datatype.h"
+
+#include "../../classes/DateTime.enum.h"
+#include "enum.h"
 
 /**
  * Converts value of integer type into a string.
@@ -56,4 +61,16 @@ long StringToInteger(std::string value) { return WRONG_VALUE; }
  * @docs
  * - https://www.mql5.com/en/docs/convert/timetostring
  */
-std::string TimeToString(datetime value, int mode) { return ""; }
+std::string TimeToString(datetime value, int mode = TIME_DATE | TIME_MINUTES) { return ""; }
+
+int _LastError = 0;
+
+void ResetLastError() { _LastError = 0; }
+int GetLastError() { return _LastError; }
+void SetUserError(int _code) { _LastError = ERR_USER_ERROR_FIRST + _code; }
+
+string EnumToString(int _value) {
+  std::stringstream ss;
+  ss << _value;
+  return ss.str();
+}

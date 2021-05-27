@@ -9,6 +9,8 @@
  * Includes MQL-compatible data types.
  */
 
+#pragma once
+
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -31,8 +33,10 @@ typedef unsigned short ushort;
 
 #ifdef __cplusplus
 #define REF(X) (&X)
+#define ARRAY_REF(T, N) array<T>& N
 #else
 #define REF(X) &X
+#define ARRAY_REF(T, N) REF(T) N
 #endif
 
 #ifdef __MQL__
@@ -44,12 +48,20 @@ class array {
 
  public:
   operator T*() { return &data.first(); }
-  operator T[]() { return &data.first(); }
   T& operator[](int index) { return data[index] }
 };
 
-#define ARRAY(T, N) array<T> N;
+#define ARRAY(T, N) ::array<T> N
 #endif
+
+void test(ARRAY_REF(int, foo)) {
+
+}
+
+void bla() {
+  ARRAY(int, bar);
+  test(bar);
+}
 
 unsigned int GetPointer(void* _ptr) { return (unsigned int)_ptr; }
 
@@ -72,3 +84,5 @@ datetime StringToTime(const string& value) {
 class color {
 
 };
+
+

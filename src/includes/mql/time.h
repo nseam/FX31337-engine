@@ -12,6 +12,8 @@
  * - https://www.mql5.com/en/docs/dateandtime
  */
 
+#pragma once
+
 // Forward declarations.
 struct MqlDateTime;
 

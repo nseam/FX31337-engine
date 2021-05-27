@@ -12,6 +12,8 @@
  * - https://www.mql5.com/en/docs/common
  */
 
+#pragma once
+
 /**
  * Returns number of seconds in a period.
  *

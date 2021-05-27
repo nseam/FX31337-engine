@@ -9,6 +9,8 @@
  * Includes functions related to strings.
  */
 
+#pragma once
+
 #define PrintFormat printf
 
 // Includes standard C++ libraries.
