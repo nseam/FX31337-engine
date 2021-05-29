@@ -9,6 +9,8 @@
  * Includes MQL-compatible predefined structs and variables.
  */
 
+#pragma once
+
 // Includes.
 #include "check.h"
 

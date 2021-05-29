@@ -23,14 +23,6 @@ typedef time_t datetime;
 typedef unsigned long ulong;
 typedef unsigned short ushort;
 
-#ifdef __MQL__
-#define THIS_PTR (&this)
-#define THIS_REF (this)
-#else
-#define THIS_PTR (this)
-#define THIS_REF (*this)
-#endif
-
 #ifdef __cplusplus
 #define REF(X) (&X)
 #define ARRAY_REF(T, N) array<T>& N
@@ -40,28 +32,12 @@ typedef unsigned short ushort;
 #endif
 
 #ifdef __MQL__
-#define ARRAY(T, N) T N[];
+#define THIS_PTR (&this)
+#define THIS_REF (this)
 #else
-template <typename T>
-class array {
-  std::vector<T> data;
-
- public:
-  operator T*() { return &data.first(); }
-  T& operator[](int index) { return data[index] }
-};
-
-#define ARRAY(T, N) ::array<T> N
+#define THIS_PTR (this)
+#define THIS_REF (*this)
 #endif
-
-void test(ARRAY_REF(int, foo)) {
-
-}
-
-void bla() {
-  ARRAY(int, bar);
-  test(bar);
-}
 
 unsigned int GetPointer(void* _ptr) { return (unsigned int)_ptr; }
 
