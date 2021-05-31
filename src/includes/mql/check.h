@@ -19,7 +19,11 @@
  * - https://www.mql5.com/en/docs/check/digits
  */
 #include "../../classes/Chart.enum.h"
+#include "../../classes/MQL5.mqh"
+
 int Digits() { return 0; }
+
+int _LastErrorNo = 0;
 
 /**
  * Returns the contents of the system variable _LastError.
@@ -27,7 +31,12 @@ int Digits() { return 0; }
  * @docs
  * - https://www.mql5.com/en/docs/check/getlasterror
  */
-int GetLastError() { return 0; }
+int GetLastError() { return _LastErrorNo; }
+
+
+void ResetLastError() { _LastErrorNo = 0; }
+
+void SetUserError(int _code) { _LastErrorNo = ERR_USER_ERROR_FIRST + _code; }
 
 /**
  * Checks the forced shutdown of an mql5 program.

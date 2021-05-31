@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "../../classes/Order.enum.h"
+
 /**
  * @file
  * Includes MQL-compatible enumerations.

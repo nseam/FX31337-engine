@@ -18,10 +18,11 @@
 using namespace std;
 
 /**
- * Returns the absolute value (modulus) of the specified numeric value.
+ * The function returns the absolute value (modulus) of the specified numeric value.
  *
  * @docs
- * - https://www.mql5.com/en/docs/dateandtime/timecurrent
+ * - https://www.mql5.com/en/docs/math/mathabs
  */
-#define fabs(value) MathAbs(value)
-double MathAbs(double value) {}
+double MathAbs(double value) { return ::abs(value); }
+
+double fabs(double value) { return MathAbs(value); }

@@ -11,10 +11,14 @@
 
 #pragma once
 
-#define PrintFormat printf
-
 // Includes standard C++ libraries.
 #include <string>
+
+// Polluting std::string everywhere.
+// We will probably want to make our own class to support utf8 strings (splitting, getting given character, etc.).
+using std::string;
+
+#define PrintFormat printf
 
 /**
  * Returns the length of the string.
@@ -31,3 +35,12 @@ int StringLen(string string_value) { return 0; }
  * - https://www.mql5.com/en/docs/strings/stringsubstr
  */
 string StringSubstr(string string_value, int start_pos, int length = -1) { return ""; }
+
+/**
+ * Returns value of a symbol, located in the specified position of a string.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/strings/stringgetcharacter
+ */
+unsigned short StringGetCharacter(const string& _string, int _position) { return _string[_position]; }
+

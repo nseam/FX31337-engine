@@ -13,7 +13,6 @@
 
 // Includes standard C++ libraries.
 #include <stdarg.h>  // For va_start, etc.
-
 #include <memory>  // For std::unique_ptr
 
 // Local includes.
@@ -29,6 +28,14 @@
  * - https://www.mql5.com/en/docs/convert/integertostring
  */
 string IntegerToString(long number, int str_len = 0, unsigned short fill_symbol = ' ') { return ""; }
+
+/**
+ * Rounding floating point number to a specified accuracy.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/convert/normalizedouble
+ */
+double NormalizeDouble(double _value, int _digits) { throw new NotImplementedException(); }
 
 /**
  * Returns formatted string
@@ -47,6 +54,12 @@ std::string StringFormat(const std::string& format, Args... args) {
   return std::string(buf.get(), buf.get() + size - 1);  // We don't want the '\0' inside
 }
 
+// Converter of WRONG_VALUE into expected type. e.g., "int x = WRONG_VALUE" will end up with "x = -1".
+struct _WRONG_VALUE {
+  template<typename T>
+  operator T() { return (T)-1; }
+} WRONG_VALUE;
+
 /**
  * Converts string into the number.
  *
@@ -63,14 +76,15 @@ long StringToInteger(std::string value) { return WRONG_VALUE; }
  */
 std::string TimeToString(datetime value, int mode = TIME_DATE | TIME_MINUTES) { return ""; }
 
-int _LastError = 0;
-
-void ResetLastError() { _LastError = 0; }
-int GetLastError() { return _LastError; }
-void SetUserError(int _code) { _LastError = ERR_USER_ERROR_FIRST + _code; }
-
+/**
+ * Converting an enumeration value of any type to a text form.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/convert/enumtostring
+ */
 string EnumToString(int _value) {
   std::stringstream ss;
+  // We really don't want to mess with type reflection here (if possible at all). So we are outputting the input integer.
   ss << _value;
   return ss.str();
 }

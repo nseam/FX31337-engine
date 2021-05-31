@@ -17,7 +17,6 @@
 #include <vector>
 #include <locale>
 
-using std::string;
 typedef unsigned int uint;
 typedef time_t datetime;
 typedef unsigned long ulong;

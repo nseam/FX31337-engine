@@ -22,14 +22,14 @@ using namespace std;
 
 //#include "classes/Account.mqh"
 //#include "classes/Account.define.h"
-#include "classes/Account.enum.h"
+//#include "classes/Account.enum.h"
 //#include "classes/Account.struct.h"
 //#include "classes/Action.mqh"
-#include "classes/Action.enum.h"
+//#include "classes/Action.enum.h"
 //#include "classes/Action.struct.h"
 //#include "classes/Array.mqh"
-#include "classes/Bar.enum.h"
-#include "classes/Bar.struct.h"
+//#include "classes/Bar.enum.h"
+//#include "classes/Bar.struct.h"
 //#include "classes/BasicTrade.mqh"
 //#include "classes/Buffer.mqh"
 //#include "classes/BufferStruct.mqh"
@@ -81,7 +81,7 @@ using namespace std;
 //#include "classes/Matrix.mqh"
 //#include "classes/MD5.mqh"
 //#include "classes/MQL4.mqh"
-//#include "classes/MQL5.mqh"
+#include "classes/MQL5.mqh"
 //#include "classes/Msg.mqh"
 //#include "classes/Object.mqh"
 //#include "classes/Order.mqh"
@@ -130,7 +130,7 @@ using namespace std;
 //#include "classes/Task.mqh"
 //#include "classes/Task.enum.h"
 //#include "classes/Task.struct.h"
-//#include "classes/Terminal.mqh"
+#include "classes/Terminal.mqh"
 //#include "classes/Terminal.define.h"
 //#include "classes/Terminal.enum.h"
 //#include "classes/Terminal.struct.h"
@@ -145,6 +145,6 @@ using namespace std;
 //#include "classes/Web.mqh"
 
 void main() {
-//  Terminal *terminal = new Terminal();
-//  delete terminal;
+  Terminal *terminal = new Terminal();
+  delete terminal;
 }
