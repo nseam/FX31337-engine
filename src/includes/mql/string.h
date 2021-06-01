@@ -14,11 +14,17 @@
 // Includes standard C++ libraries.
 #include <string>
 
-// Polluting std::string everywhere.
-// We will probably want to make our own class to support utf8 strings (splitting, getting given character, etc.).
 using std::string;
 
 #define PrintFormat printf
+
+#ifdef __MQL__
+#define C_STR(S) S
+#else
+#define C_STR(S) cstring_from(S)
+
+const char* cstring_from(const std::string& _value) { return _value.c_str(); }
+#endif
 
 /**
  * Returns the length of the string.
@@ -44,3 +50,9 @@ string StringSubstr(string string_value, int start_pos, int length = -1) { retur
  */
 unsigned short StringGetCharacter(const string& _string, int _position) { return _string[_position]; }
 
+template <typename First, typename... Args>
+void Print(First arg, const Args&... args) {
+  for (auto& arg : args)
+    std::cout << arg << " ";
+  std::cout << "\n";
+}

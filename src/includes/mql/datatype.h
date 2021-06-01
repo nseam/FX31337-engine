@@ -11,23 +11,20 @@
 
 #pragma once
 
-#include <string>
-#include <sstream>
 #include <iomanip>
-#include <vector>
 #include <locale>
+#include <sstream>
+#include <vector>
 
 typedef unsigned int uint;
-typedef time_t datetime;
+
 typedef unsigned long ulong;
 typedef unsigned short ushort;
 
 #ifdef __cplusplus
 #define REF(X) (&X)
-#define ARRAY_REF(T, N) array<T>& N
 #else
 #define REF(X) &X
-#define ARRAY_REF(T, N) REF(T) N
 #endif
 
 #ifdef __MQL__
@@ -40,24 +37,21 @@ typedef unsigned short ushort;
 
 unsigned int GetPointer(void* _ptr) { return (unsigned int)_ptr; }
 
-datetime StringToTime(const string& value) {
-  std::tm t;
-  std::istringstream ss(value);
-
-  ss >> std::get_time(&t, "%Y-%m-%d %H:%M:%S");
-
-  if (ss.fail()) {
-    throw std::runtime_error{"failed to parse time string"};
-  }
-  return mktime(&t);
-}
-
 #ifndef __MQL__
 #define typename(T) typeid(T).name()
 #endif
 
+/**
+ * MQL's "color" type.
+ */
 class color {
+  unsigned int value;
 
+ public:
+  color(unsigned int _color) { value = _color; }
+  color& operator=(unsigned int _color) {
+    value = _color;
+    return *this;
+  }
+  operator unsigned int() const { return value; }
 };
-
-

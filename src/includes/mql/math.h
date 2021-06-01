@@ -15,7 +15,6 @@
 //#include <bits/stdc++.h>  // GNU GCC extension.
 #include <cfloat>
 #include <cmath>
-using namespace std;
 
 /**
  * The function returns the absolute value (modulus) of the specified numeric value.

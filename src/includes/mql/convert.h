@@ -74,7 +74,7 @@ long StringToInteger(std::string value) { return WRONG_VALUE; }
  * @docs
  * - https://www.mql5.com/en/docs/convert/timetostring
  */
-std::string TimeToString(datetime value, int mode = TIME_DATE | TIME_MINUTES) { return ""; }
+string TimeToString(datetime value, int mode = TIME_DATE | TIME_MINUTES) { return ""; }
 
 /**
  * Converting an enumeration value of any type to a text form.

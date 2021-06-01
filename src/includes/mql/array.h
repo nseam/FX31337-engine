@@ -27,7 +27,7 @@
  *   ARRAY_REF(<type of the array items>, <name of the variable>)
  */
 #ifdef __cplusplus
-#define ARRAY_REF(T, N) array<T>& N
+#define ARRAY_REF(T, N) _array<T>& N
 #else
 #define ARRAY_REF(T, N) REF(T) N
 #endif
@@ -37,7 +37,7 @@
  *
  * @usage
  *   ARRAY(<type of the array items>, <name of the variable>)
- */ 
+ */
 #ifdef __MQL__
 #define ARRAY(T, N) T N[];
 #else
@@ -45,7 +45,7 @@
  * Custom array template to be used as a replacement of dynamic array in MQL.
  */
 template <typename T>
-class array {
+class _array {
   // List of items.
   std::vector<T> m_data;
 
@@ -75,14 +75,14 @@ class array {
 
   /**
    * Sets IsSeries flag for an array.
-   * Array indexing is from 0 without IsSeries flag or from last-element with IsSeries flag.
+   * Array indexing is from 0 without IsSeries flag or from last-element
+   * with IsSeries flag.
    */
   void setIsSeries(bool _isSeries) { m_isSeries = _isSeries; }
 };
 
-#define ARRAY(T, N) ::array<T> N
+#define ARRAY(T, N) ::_array<T> N
 #endif
-
 
 /**
  * The function returns the number of elements of a selected array.
@@ -93,6 +93,14 @@ class array {
 template <typename T>
 int ArraySize(const ARRAY_REF(T, _array)) {
   return _array.size();
+}
+
+/**
+ * Returns size of the array.
+ */
+template <typename T, int size>
+constexpr int ArraySize(const T REF(_array)[size]) {
+  return sizeof(_array) / sizeof(*_array);
 }
 
 /**
@@ -107,7 +115,8 @@ int ArrayResize(ARRAY_REF(T, _array), int _new_size, int _reserve_size = 0) {
 }
 
 /**
- * The function sets the AS_SERIES flag to a selected object of a dynamic array, and elements will be indexed like in timeseries.
+ * The function sets the AS_SERIES flag to a selected object of a dynamic array, and elements will be indexed like
+ * in timeseries.
  *
  * @docs
  * - https://www.mql5.com/en/docs/array/arraysetasseries

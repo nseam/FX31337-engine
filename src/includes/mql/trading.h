@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "string.h"
+
 // HistoryDealGetDouble
 // HistoryDealGetInteger
 // HistoryDealGetString
@@ -57,3 +59,7 @@ struct _SymbolGetter {
 struct _PeriodGetter {
   operator ENUM_TIMEFRAMES() { return PERIOD_M30; }
 } _Period;
+
+int Bars(const string& _symbol, ENUM_TIMEFRAMES _tf) { throw NotImplementedException(); }
+
+int ChartID() { throw NotImplementedException(); }

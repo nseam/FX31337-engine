@@ -7,6 +7,7 @@
 #pragma once
 
 #include "../../classes/Order.enum.h"
+#include "time.h"
 
 /**
  * @file
@@ -224,6 +225,7 @@ struct MqlTradeResult {
 #define WhiteSmoke 0xF5F5F5
 #define Yellow 0x00FFFF
 #define YellowGreen 0x32CD9A
+#define clrNONE -1
 
 // Additional enum values for ENUM_SYMBOL_INFO_DOUBLE
 #define SYMBOL_MARGIN_LIMIT ((ENUM_SYMBOL_INFO_DOUBLE)46)
