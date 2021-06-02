@@ -25,3 +25,29 @@
 double MathAbs(double value) { return ::abs(value); }
 
 double fabs(double value) { return MathAbs(value); }
+
+/**
+ * The function returns the maximal value of two values.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/math/mathmax
+ */
+template <typename T>
+T MathMax(T value1,  // first value
+          T value2   // second value
+) {
+  return value1 > value2 ? value1 : value2;
+}
+
+/**
+ * The function returns the minimal value of two values.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/math/mathmin
+ */
+template<typename T>
+T MathMin(T value1,  // first value
+          T value2   // second value
+) {
+  return value1 < value2 ? value1 : value2;
+}

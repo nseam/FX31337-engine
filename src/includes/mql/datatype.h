@@ -30,9 +30,11 @@ typedef unsigned short ushort;
 #ifdef __MQL__
 #define THIS_PTR (&this)
 #define THIS_REF (this)
+#define PTR_ATTRIB(O, A) O . A
 #else
 #define THIS_PTR (this)
 #define THIS_REF (*this)
+#define PTR_ATTRIB(O, A) O -> A
 #endif
 
 unsigned int GetPointer(void* _ptr) { return (unsigned int)_ptr; }

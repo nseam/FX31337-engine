@@ -28,13 +28,16 @@ class datetime {
  public:
   datetime() {}
   datetime(const time_t& _time) { dt = _time; }
+  datetime(const long& _time) { throw NotImplementedException(); }
+  datetime(const int& _time) { throw NotImplementedException(); }
   datetime& operator=(const time_t& _time) { dt = _time; }
-  bool operator==(int _time) const { throw NotImplementedException(); }
-  bool operator<(int _time) const { throw NotImplementedException(); }
-  bool operator>(int _time) const { throw NotImplementedException(); }
+  bool operator==(const int& _time) const { throw NotImplementedException(); }
+  bool operator==(const datetime& _time) const { throw NotImplementedException(); }
+  bool operator<(const int& _time) const { throw NotImplementedException(); }
+  bool operator>(const int& _time) const { throw NotImplementedException(); }
   bool operator<(const datetime& _time) const { throw NotImplementedException(); }
   bool operator>(const datetime& _time) const { throw NotImplementedException(); }
-  operator long() { throw NotImplementedException(); }
+  operator long() const { throw NotImplementedException(); }
 };
 
 /**
@@ -43,8 +46,8 @@ class datetime {
  * @docs
  * - https://www.mql5.com/en/docs/dateandtime/timecurrent
  */
-datetime TimeCurrent() { return 0; }
-datetime TimeCurrent(MqlDateTime& dt_struct) { return 0; }
+datetime TimeCurrent() { return datetime(); }
+datetime TimeCurrent(MqlDateTime& dt_struct) { throw NotImplementedException(); }
 
 /**
  * The function gets to time_array history data of bar opening time for the specified symbol-period pair in the

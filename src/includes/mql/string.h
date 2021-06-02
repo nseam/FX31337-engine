@@ -56,3 +56,34 @@ void Print(First arg, const Args&... args) {
     std::cout << arg << " ";
   std::cout << "\n";
 }
+
+template <typename First, typename... Args>
+void Alert(First arg, const Args&... args) {
+  std::cout << "Alert: ";
+  for (auto& arg : args) std::cout << arg << " ";
+  std::cout << "\n";
+}
+
+/**
+ * The function converts string containing a symbol representation of number into number of double type.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/convert/stringtodouble
+ */
+double StringToDouble(string value  // string
+) {
+  return std::stod(value);
+}
+
+/**
+ * Converting numeric value into text string.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/convert/doubletostring
+ */
+string DoubleToString(double value,   // number
+                      int digits = 8  // number of digits after decimal point
+) {
+  return std::to_string(value).substr(0, digits);
+}
+

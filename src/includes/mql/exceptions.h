@@ -6,14 +6,13 @@
 
 /**
  * @file
- * Includes MQL-compatible constants
+ * Includes C++ - only exceptions.
  */
 
-// Empty value in an indicator buffer.
-#define EMPTY_VALUE DBL_MAX
+#pragma once
 
-// Incorrect handle.
-#define INVALID_HANDLE -1
+#include <exception>
 
-// The constant can be implicitly cast to any enumeration type.
-#define WRONG_VALUE -1
+struct NotImplementedException : public std::exception {
+  const char* what() const throw() { return "Feature is not yet implemented!"; }
+};

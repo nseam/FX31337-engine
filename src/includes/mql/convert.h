@@ -69,6 +69,17 @@ struct _WRONG_VALUE {
 long StringToInteger(std::string value) { return WRONG_VALUE; }
 
 /**
+ * It converts the symbol code (unicode) into one-symbol string and returns resulting string.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/convert/shorttostring
+ */
+string ShortToString(ushort symbol_code  // symbol
+) {
+  throw NotImplementedException();
+}
+
+/**
  * Converts a value containing time in seconds.
  *
  * @docs
