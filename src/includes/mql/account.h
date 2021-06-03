@@ -9,6 +9,8 @@
  * Includes MQL-compatible account functions.
  */
 
+#pragma once
+
 /**
  * Returns a value of double type of the corresponding account property.
  *

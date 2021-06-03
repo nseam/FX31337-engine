@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "array.h"
 #include "../../classes/Chart.enum.h"
 
 // Forward declarations.
@@ -57,11 +58,11 @@ datetime TimeCurrent(MqlDateTime& dt_struct) { throw NotImplementedException(); 
  * @docs
  * - https://www.mql5.com/en/docs/series/copytime
  */
-int CopyTime(string symbol_name,         // symbol name
-             ENUM_TIMEFRAMES timeframe,  // period
-             int start_pos,              // start position
-             int count,                  // data count to copy
-             datetime time_array[]       // target array to copy open times
+int CopyTime(string symbol_name,              // symbol name
+             ENUM_TIMEFRAMES timeframe,       // period
+             int start_pos,                   // start position
+             int count,                       // data count to copy
+             ARRAY_REF(datetime, time_array)  // target array to copy open times
 ) {
   throw NotImplementedException();
 }
@@ -74,11 +75,11 @@ int CopyTime(string symbol_name,         // symbol name
  * @docs
  * - https://www.mql5.com/en/docs/series/copytime
  */
-int CopyTime(string symbol_name,         // symbol name
-             ENUM_TIMEFRAMES timeframe,  // period
-             datetime start_time,        // start date and time
-             int count,                  // data count to copy
-             datetime time_array[]       // target array to copy  open times
+int CopyTime(string symbol_name,              // symbol name
+             ENUM_TIMEFRAMES timeframe,       // period
+             datetime start_time,             // start date and time
+             int count,                       // data count to copy
+             ARRAY_REF(datetime, time_array)  // target array to copy  open times
 ) {
   throw NotImplementedException();
 }
@@ -91,11 +92,11 @@ int CopyTime(string symbol_name,         // symbol name
  * @docs
  * - https://www.mql5.com/en/docs/series/copytime
  */
-int CopyTime(string symbol_name,         // symbol name
-             ENUM_TIMEFRAMES timeframe,  // period
-             datetime start_time,        // start date and time
-             datetime stop_time,         // stop date and time
-             datetime time_array[]       // target array to copy open times
+int CopyTime(string symbol_name,              // symbol name
+             ENUM_TIMEFRAMES timeframe,       // period
+             datetime start_time,             // start date and time
+             datetime stop_time,              // stop date and time
+             ARRAY_REF(datetime, time_array)  // target array to copy open times
 ) {
   throw NotImplementedException();
 }

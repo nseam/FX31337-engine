@@ -35,24 +35,7 @@ string IntegerToString(long number, int str_len = 0, unsigned short fill_symbol 
  * @docs
  * - https://www.mql5.com/en/docs/convert/normalizedouble
  */
-double NormalizeDouble(double _value, int _digits) { throw new NotImplementedException(); }
-
-/**
- * Returns formatted string
- *
- * @docs
- * - https://www.mql5.com/en/docs/convert/stringformat
- */
-template <typename... Args>
-std::string StringFormat(const std::string& format, Args... args) {
-  size_t size = snprintf(nullptr, 0, format.c_str(), args...) + 1;  // Extra space for '\0'
-  if (size <= 0) {
-    throw std::runtime_error("Error during formatting.");
-  }
-  std::unique_ptr<char[]> buf(new char[size]);
-  snprintf(buf.get(), size, format.c_str(), args...);
-  return std::string(buf.get(), buf.get() + size - 1);  // We don't want the '\0' inside
-}
+double NormalizeDouble(double _value, int _digits) { throw NotImplementedException(); }
 
 // Converter of WRONG_VALUE into expected type. e.g., "int x = WRONG_VALUE" will end up with "x = -1".
 struct _WRONG_VALUE {

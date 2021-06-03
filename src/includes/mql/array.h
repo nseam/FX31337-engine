@@ -53,10 +53,19 @@ class _array {
   bool m_isSeries = false;
 
  public:
+
+  _array() {
+  }
+
+  template<int size>
+  _array(const T REF(_arr)[size]) {
+    for (const auto& _item : _arr) m_data.push_back(_item);
+  }
+
   /**
    * Returns pointer of first element (provides a way to iterate over array elements).
    */
-  operator T*() { return &m_data.first(); }
+  //operator T*() { return &m_data.first(); }
 
   /**
    * Index operator. Takes care of IsSeries flag.
@@ -111,7 +120,7 @@ constexpr int ArraySize(const T REF(_array)[size]) {
  */
 template <typename T>
 int ArrayResize(ARRAY_REF(T, _array), int _new_size, int _reserve_size = 0) {
-  throw new NotImplementedException();
+  throw NotImplementedException();
 }
 
 /**
@@ -147,9 +156,6 @@ template <typename T>
 int ArrayMinimum(const ARRAY_REF(T, _array), int _start = 0, unsigned int _count = WHOLE_ARRAY) {
   throw NotImplementedException();
 }
-
-// For further methods using arrays we need to include Array class.
-#include "../../classes/Array.mqh"
 
 /**
  * Gets substrings by a specified separator from the specified string, returns the number of substrings obtained.

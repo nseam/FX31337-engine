@@ -13,6 +13,7 @@
 
 // Includes standard C++ libraries.
 #include <string>
+#include <iostream>
 
 using std::string;
 
@@ -50,18 +51,19 @@ string StringSubstr(string string_value, int start_pos, int length = -1) { retur
  */
 unsigned short StringGetCharacter(const string& _string, int _position) { return _string[_position]; }
 
-template <typename First, typename... Args>
-void Print(First arg, const Args&... args) {
-  for (auto& arg : args)
-    std::cout << arg << " ";
-  std::cout << "\n";
+void Print() {
 }
 
-template <typename First, typename... Args>
-void Alert(First arg, const Args&... args) {
-  std::cout << "Alert: ";
-  for (auto& arg : args) std::cout << arg << " ";
-  std::cout << "\n";
+template <typename Head, typename... Tail>
+void Print(Head&& h, Tail&&... t) {
+  std::cout << h << " ";
+  Print(t...);
+}
+
+template <typename Head, typename... Tail>
+void Alert(Head h, Tail... t) {
+  std::cout << "Alert: " << h << " ";
+  Print(t...);
 }
 
 /**
@@ -87,3 +89,30 @@ string DoubleToString(double value,   // number
   return std::to_string(value).substr(0, digits);
 }
 
+/**
+ * Converting a symbol code into a one-character string.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/convert/chartostring
+ */
+string CharToString(unsigned char char_code  // numeric code of symbol
+) {
+  throw NotImplementedException();
+}
+
+/**
+ * Returns formatted string
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/convert/stringformat
+ */
+template <typename... Args>
+std::string StringFormat(const std::string& format, Args... args) {
+  size_t size = snprintf(nullptr, 0, format.c_str(), args...) + 1;  // Extra space for '\0'
+  if (size <= 0) {
+    throw std::runtime_error("Error during formatting.");
+  }
+  std::unique_ptr<char[]> buf(new char[size]);
+  snprintf(buf.get(), size, format.c_str(), args...);
+  return std::string(buf.get(), buf.get() + size - 1);  // We don't want the '\0' inside
+}

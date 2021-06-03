@@ -98,3 +98,16 @@ unsigned int FileWriteString(int file_handle,           // File handle
 ) {
   throw NotImplementedException();
 }
+
+/**
+ * The function is intended for writing of data into a CSV file, delimiter being inserted automatically unless it is equal to 0. After writing into the file, the line end character "\r\n" will be added.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/files/filewrite
+ */
+template <typename... Args>
+unsigned int FileWrite(int file_handle,     // File handle
+                       const Args&... args  // List of recorded parameters
+) {
+  throw NotImplementedException();
+}

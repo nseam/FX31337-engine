@@ -31,10 +31,12 @@ typedef unsigned short ushort;
 #define THIS_PTR (&this)
 #define THIS_REF (this)
 #define PTR_ATTRIB(O, A) O . A
+#define PTR_TO_REF(PTR) PTR
 #else
 #define THIS_PTR (this)
 #define THIS_REF (*this)
 #define PTR_ATTRIB(O, A) O -> A
+#define PTR_TO_REF(PTR) (*PTR)
 #endif
 
 unsigned int GetPointer(void* _ptr) { return (unsigned int)_ptr; }
