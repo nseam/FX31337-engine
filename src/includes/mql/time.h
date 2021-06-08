@@ -185,3 +185,11 @@ datetime StringToTime(const string& value) {
   }
   return mktime(&t);
 }
+
+/**
+ * Converts a value containing time in seconds.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/convert/timetostring
+ */
+string TimeToString(datetime value, int mode = TIME_DATE | TIME_MINUTES) { return ""; }

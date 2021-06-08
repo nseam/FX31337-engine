@@ -11,15 +11,10 @@
 
 #pragma once
 
-// Includes standard C++ libraries.
-#include <stdarg.h>  // For va_start, etc.
-#include <memory>  // For std::unique_ptr
-
 // Local includes.
 #include "datatype.h"
-
+//#include "enum.h"
 #include "../../classes/DateTime.enum.h"
-#include "enum.h"
 
 /**
  * Converts value of integer type into a string.
@@ -61,14 +56,6 @@ string ShortToString(ushort symbol_code  // symbol
 ) {
   throw NotImplementedException();
 }
-
-/**
- * Converts a value containing time in seconds.
- *
- * @docs
- * - https://www.mql5.com/en/docs/convert/timetostring
- */
-string TimeToString(datetime value, int mode = TIME_DATE | TIME_MINUTES) { return ""; }
 
 /**
  * Converting an enumeration value of any type to a text form.

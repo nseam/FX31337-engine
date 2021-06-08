@@ -3,6 +3,7 @@
 #include "math.h"
 #include "datatype.h"
 #include "string.h"
+#include "predefined.h"
 #include "convert.h"
 #include "array.h"
 #include "file.h"

@@ -12,6 +12,8 @@
  * - https://www.mql5.com/en/docs/check
  */
 
+#pragma once
+
 /**
  * Returns the number of decimal digits determining the accuracy of price of the current chart symbol.
  *
@@ -20,8 +22,6 @@
  */
 #include "../../classes/Chart.enum.h"
 #include "../../classes/MQL5.mqh"
-
-int Digits() { return 0; }
 
 int _LastErrorNo = 0;
 
@@ -68,6 +68,14 @@ string MQLInfoString(int property_id) { return "UNKNOWN"; }
  * - https://www.mql5.com/en/docs/check/period
  */
 ENUM_TIMEFRAMES Period() { return PERIOD_CURRENT; }
+
+/**
+ * Returns the number of decimal digits determining the accuracy of price of the current chart symbol.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/check/digits
+ */
+int Digits() { return 4; }
 
 /**
  * Returns the point size of the current symbol in the quote currency.

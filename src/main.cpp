@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 
+#include "classes/Terminal.mqh"
+
 using namespace std;
 
 // Includes for MQL code compatibility.
@@ -81,7 +83,7 @@ using namespace std;
 //#include "classes/Matrix.mqh"
 //#include "classes/MD5.mqh"
 //#include "classes/MQL4.mqh"
-#include "classes/MQL5.mqh"
+//#include "classes/MQL5.mqh"
 //#include "classes/Msg.mqh"
 //#include "classes/Object.mqh"
 //#include "classes/Order.mqh"
@@ -130,7 +132,7 @@ using namespace std;
 //#include "classes/Task.mqh"
 //#include "classes/Task.enum.h"
 //#include "classes/Task.struct.h"
-#include "classes/Terminal.mqh"
+//#include "classes/Terminal.mqh"
 //#include "classes/Terminal.define.h"
 //#include "classes/Terminal.enum.h"
 //#include "classes/Terminal.struct.h"
@@ -145,6 +147,6 @@ using namespace std;
 //#include "classes/Web.mqh"
 
 void main() {
-  Terminal *terminal = new Terminal();
+  auto* terminal = new Terminal();
   delete terminal;
 }

@@ -17,20 +17,13 @@
 // Includes standard C++ libraries.
 #include <vector>
 
-// Defines.
-#define WHOLE_ARRAY -1  // For processing the entire array.
-
 /**
  * Reference to the array.
  *
  * @usage
  *   ARRAY_REF(<type of the array items>, <name of the variable>)
  */
-#ifdef __cplusplus
-#define ARRAY_REF(T, N) _array<T>& N
-#else
-#define ARRAY_REF(T, N) REF(T) N
-#endif
+#define ARRAY_REF(T, N) _cpp_array<T>& N
 
 /**
  * Array definition.
@@ -38,14 +31,18 @@
  * @usage
  *   ARRAY(<type of the array items>, <name of the variable>)
  */
-#ifdef __MQL__
-#define ARRAY(T, N) T N[];
-#else
+#define ARRAY(T, N) ::_cpp_array<T> N
+
+// Defines.
+#define WHOLE_ARRAY -1  // For processing the entire array.
+
+#ifndef __MQL__
+
 /**
  * Custom array template to be used as a replacement of dynamic array in MQL.
  */
 template <typename T>
-class _array {
+class _cpp_array {
   // List of items.
   std::vector<T> m_data;
 
@@ -54,11 +51,11 @@ class _array {
 
  public:
 
-  _array() {
+  _cpp_array() {
   }
 
   template<int size>
-  _array(const T REF(_arr)[size]) {
+  _cpp_array(const T REF(_arr)[size]) {
     for (const auto& _item : _arr) m_data.push_back(_item);
   }
 
@@ -71,6 +68,11 @@ class _array {
    * Index operator. Takes care of IsSeries flag.
    */
   T& operator[](int index) { return m_data[m_isSeries ? (size() - index - 1) : index]; }
+
+  /**
+   * Index operator. Takes care of IsSeries flag.
+   */
+  const T& operator[](int index) const { return m_data[m_isSeries ? (size() - index - 1) : index]; }
 
   /**
    * Returns number of elements in the array.
@@ -90,7 +92,6 @@ class _array {
   void setIsSeries(bool _isSeries) { m_isSeries = _isSeries; }
 };
 
-#define ARRAY(T, N) ::_array<T> N
 #endif
 
 /**
@@ -135,6 +136,8 @@ bool ArraySetAsSeries(ARRAY_REF(T, _array), bool _flag) {
   _array.setIsSeries(_flag);
 }
 
+#include "../../classes/Array.mqh"
+
 /**
  * Searches for the largest element in the first dimension of a multidimensional numeric array.
  *
@@ -143,7 +146,7 @@ bool ArraySetAsSeries(ARRAY_REF(T, _array), bool _flag) {
  */
 template <typename T>
 int ArrayMaximum(const ARRAY_REF(T, _array), int _start = 0, unsigned int _count = WHOLE_ARRAY) {
-  throw NotImplementedException();
+  return Array::ArrayMaximum(_array, _start, _count);
 }
 
 /**
@@ -154,7 +157,7 @@ int ArrayMaximum(const ARRAY_REF(T, _array), int _start = 0, unsigned int _count
  */
 template <typename T>
 int ArrayMinimum(const ARRAY_REF(T, _array), int _start = 0, unsigned int _count = WHOLE_ARRAY) {
-  throw NotImplementedException();
+  return Array::ArrayMinimum(_array, _start, _count);
 }
 
 /**
