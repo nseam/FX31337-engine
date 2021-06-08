@@ -116,3 +116,16 @@ std::string StringFormat(const std::string& format, Args... args) {
   snprintf(buf.get(), size, format.c_str(), args...);
   return std::string(buf.get(), buf.get() + size - 1);  // We don't want the '\0' inside
 }
+
+/**
+ * Search for a substring in a string.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/strings/stringfind
+ */
+int StringFind(string string_value,     // string in which search is made
+               string match_substring,  // what is searched
+               int start_pos = 0        // from what position search starts
+) {
+  throw NotImplementedException();
+}

@@ -141,7 +141,7 @@ using namespace std;
 //#include "classes/Tests.mqh"
 //#include "classes/Ticker.mqh"
 //#include "classes/Timer.mqh"
-//#include "classes/Trade.mqh"
+#include "classes/Trade.mqh"
 //#include "classes/Trade.enum.h"
 //#include "classes/Trade.struct.h"
 //#include "classes/Web.mqh"
