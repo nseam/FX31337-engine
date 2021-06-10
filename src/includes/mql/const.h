@@ -14,6 +14,24 @@
 
 // Incorrect handle.
 #define INVALID_HANDLE -1
+#include <string>
 
-// The constant can be implicitly cast to any enumeration type.
-#define WRONG_VALUE -1
+// Converter of WRONG_VALUE into expected type. e.g., "int x = WRONG_VALUE" will end up with "x = -1".
+struct _WRONG_VALUE {
+  template <typename T>
+  operator T() {
+    return (T)-1;
+  }
+} WRONG_VALUE;
+
+
+// Converter of NULL_VALUE into expected type. e.g., "int x = NULL_VALUE" will end up with "x = 0".
+struct _NULL_VALUE {
+  template <typename T>
+  explicit operator T() const {
+    return (T)0;
+  }
+} NULL_VALUE;
+
+template<>
+inline _NULL_VALUE::operator const std::string() const { return ""; }

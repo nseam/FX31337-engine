@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "array.h"
 #include "../../classes/Chart.enum.h"
+#include "../../classes/DateTime.enum.h"
 
 // Forward declarations.
 struct MqlDateTime;
@@ -193,3 +193,10 @@ datetime StringToTime(const string& value) {
  * - https://www.mql5.com/en/docs/convert/timetostring
  */
 string TimeToString(datetime value, int mode = TIME_DATE | TIME_MINUTES) { return ""; }
+
+template <char... T>
+datetime operator"" _D() {
+  throw NotImplementedException();
+}
+
+#define DATETIME_LITERAL(STR) _D" ## STR ## "

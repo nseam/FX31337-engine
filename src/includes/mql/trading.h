@@ -54,6 +54,9 @@
 // PositionsTotal
 
 
+// Forwards declarations.
+struct MqlTradeCheckResult;
+
 /**
  * Returns the number of current orders.
  *
@@ -432,3 +435,72 @@ bool HistoryDealGetString(ulong ticket_number,                    // Ticket
 ) {
   throw NotImplementedException();
 }
+
+/**
+ * The function calculates the margin required for the specified order type, on the current account, in the current market environment not taking into account current pending orders and open positions. It allows the evaluation of margin for the trade operation planned. The value is returned in the account currency.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/trading/ordercalcmargin
+ */
+bool OrderCalcMargin(ENUM_ORDER_TYPE action,  // type of order
+                     string symbol,           // symbol name
+                     double volume,           // volume
+                     double price,            // open price
+                     double& margin           // variable for obtaining the margin value
+) {
+  throw NotImplementedException();
+}
+
+/**
+ * The function calculates the profit for the current account, in the current market conditions, based on the parameters passed. The function is used for pre-evaluation of the result of a trade operation. The value is returned in the account currency.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/trading/ordercalcprofit
+ */
+bool OrderCalcProfit(ENUM_ORDER_TYPE action,  // type of the order (ORDER_TYPE_BUY or ORDER_TYPE_SELL)
+                     string symbol,           // symbol name
+                     double volume,           // volume
+                     double price_open,       // open price
+                     double price_close,      // close price
+                     double& profit           // variable for obtaining the profit value
+) {
+  throw NotImplementedException();
+}
+
+/**
+ * The OrderCheck() function checks if there are enough money to execute a required trade operation. The check results are placed to the fields of the MqlTradeCheckResult structure.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/trading/ordercheck
+ */
+bool OrderCheck(const MqlTradeRequest& request,  // request structure
+                MqlTradeCheckResult& result      // result structure
+) {
+  throw NotImplementedException();
+}
+
+/**
+ * The OrderSend() function is used for executing trade operations by sending requests to a trade server.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/trading/ordersend
+ */
+bool OrderSend(const MqlTradeRequest& request,  // query structure
+               MqlTradeResult& result           // structure of the answer
+) {
+  throw NotImplementedException();
+}
+
+/**
+ * The OrderSendAsync() function is used for conducting asynchronous trade operations without waiting for the trade server's response to a sent request. The function is designed for high-frequency trading, when under the terms of the trading algorithm it is unacceptable to waste time waiting for a response from the server.
+ *
+ * @docs
+ * - https://www.mql5.com/en/docs/trading/ordersendasync
+ */
+bool OrderSendAsync(const MqlTradeRequest& request,  // Request structure
+                    MqlTradeResult& result           // Response structure
+) {
+  throw NotImplementedException();
+}
+
+#include "../../classes/Trade.mqh"

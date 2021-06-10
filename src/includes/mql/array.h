@@ -17,25 +17,6 @@
 // Includes standard C++ libraries.
 #include <vector>
 
-/**
- * Reference to the array.
- *
- * @usage
- *   ARRAY_REF(<type of the array items>, <name of the variable>)
- */
-#define ARRAY_REF(T, N) _cpp_array<T>& N
-
-/**
- * Array definition.
- *
- * @usage
- *   ARRAY(<type of the array items>, <name of the variable>)
- */
-#define ARRAY(T, N) ::_cpp_array<T> N
-
-// Defines.
-#define WHOLE_ARRAY -1  // For processing the entire array.
-
 #ifndef __MQL__
 
 /**
@@ -158,14 +139,4 @@ int ArrayMaximum(const ARRAY_REF(T, _array), int _start = 0, unsigned int _count
 template <typename T>
 int ArrayMinimum(const ARRAY_REF(T, _array), int _start = 0, unsigned int _count = WHOLE_ARRAY) {
   return Array::ArrayMinimum(_array, _start, _count);
-}
-
-/**
- * Gets substrings by a specified separator from the specified string, returns the number of substrings obtained.
- *
- * @docs
- * - https://www.mql5.com/en/docs/strings/stringsplit
- */
-int StringSplit(const string& _string, unsigned short _separator, ARRAY_REF(string, _output)) {
-  throw NotImplementedException();
 }

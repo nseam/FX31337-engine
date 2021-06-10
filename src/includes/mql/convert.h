@@ -32,12 +32,6 @@ string IntegerToString(long number, int str_len = 0, unsigned short fill_symbol 
  */
 double NormalizeDouble(double _value, int _digits) { throw NotImplementedException(); }
 
-// Converter of WRONG_VALUE into expected type. e.g., "int x = WRONG_VALUE" will end up with "x = -1".
-struct _WRONG_VALUE {
-  template<typename T>
-  operator T() { return (T)-1; }
-} WRONG_VALUE;
-
 /**
  * Converts string into the number.
  *
